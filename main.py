@@ -20,10 +20,11 @@ class Application(tkinter.Frame):
 
     def setup(self):
         self.render_tabs()
-        self.set_title('Projeto AB1')
 
-    def set_title(self, title=''):
-        self.master.title(title)
+        self.master.configure(background='#ddddee')
+        self.master.geometry('588x500')
+        self.master.title('Projeto AB1')
+        self.master.resizable(False, False)
 
     def render_tabs(self):
         tab_control = ttk.Notebook(self.master)
@@ -69,7 +70,7 @@ class Application(tkinter.Frame):
             tab['screen'](tab['frame'])
 
 
-        tab_control.pack(expand=1, fill="both")
+        tab_control.pack(expand=1, fill='both')
 
 app = Application(master=tkinter.Tk())
 app.start()
