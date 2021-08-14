@@ -1,76 +1,79 @@
-import tkinter
-from tkinter import ttk
+class Application:
+    def mainloop(self):
+        while True:
+            print("Escolha uma funcionalidade:\n")
+            print("  1 - Conversão entre unidades de medida de informação")
+            print("  2 - Conversão entre bases numéricas")
+            print("  3 - Soma de binários")
+            print("  4 - Funções equivalentes as portas lógicas")
+            print("  5 - Expressão da álgebra relacional")
+            print("  6 - Sair")
 
-from screens.about import About
-from screens.relational_algebra import RelationalAlgebra
-from screens.logical_ports import LogicalPorts
-from screens.sum_of_binaries import SumOfBinaries
-from screens.number_systems import NumberSystems
-from screens.measurement_units import MeasurementUnits
+            selectedOption = int(input("\nSelecione uma opção: "))
 
-class Application(tkinter.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.master = master
+            if (selectedOption == 6):
+                break
 
-    def start(self):
-        self.pack()
-        self.setup()
-        self.mainloop()
+            if (selectedOption == 1):
+                self.measurementUnitsConversion()
+            elif (selectedOption == 2):
+                self.numericSystemsConversion()
+            elif (selectedOption == 3):
+                self.sumOfBinaries()
+            elif (selectedOption == 4):
+                self.logicalPorts()
+            elif (selectedOption == 5):
+                self.relationalAlgebra()
 
-    def setup(self):
-        self.render_tabs()
+    def measurementUnitsConversion(self):
+        # Código de conversão entre unidades de medidas
+        
+        print('measurementUnitsConversion')
 
-        self.master.configure(background='#ddddee')
-        self.master.geometry('588x500')
-        self.master.title('Projeto AB1')
-        self.master.resizable(False, False)
+    
+    def numericSystemsConversion(self):
+        # Código de conversão entre bases numéricas
+        print('numericSystemsConversion')        
+    
+    def sumOfBinaries(self):
+        firstBinary = input()
+        secondBinary = input()
 
-    def render_tabs(self):
-        tab_control = ttk.Notebook(self.master)
+        firstBinary, secondBinary = firstBinary[::-1], secondBinary[::-1]
 
-        opa = ttk.Frame(tab_control)
+        sum = 0
 
-        tabs = [
-            {
-                'name': 'Unidades de medida',
-                'frame': opa,
-                'screen': MeasurementUnits
-            },
-            {
-                'name': 'Bases numéricas',
-                'frame': ttk.Frame(tab_control),
-                'screen': NumberSystems
-            },
-            {
-                'name': 'Soma de binários',
-                'frame': ttk.Frame(tab_control),
-                'screen': SumOfBinaries
-            },
-            {
-                'name': 'Portas lógicas',
-                'frame': ttk.Frame(tab_control),
-                'screen': LogicalPorts
-            },
-            {
-                'name': 'Álgebra relacional',
-                'frame': ttk.Frame(tab_control),
-                'screen': RelationalAlgebra
-            },
-            {
-                'name': 'Sobre o projeto',
-                'frame': ttk.Frame(tab_control),
-                'screen': About
-            }
-        ]
+        for index in range(len(firstBinary)):
+            digit = int(firstBinary[index])
 
-        for tab in tabs:
-            tab_control.add(tab['frame'], text=tab['name'])
+            if (digit == 0):
+                continue
 
-            tab['screen'](tab['frame'])
+            sum += (digit * 2) ** index
 
+        for index in range(len(secondBinary)):
+            digit = int(secondBinary[index])
 
-        tab_control.pack(expand=1, fill='both')
+            if (digit == 0):
+                continue
 
-app = Application(master=tkinter.Tk())
-app.start()
+            sum += (digit * 2) ** index
+
+        print('|-------------------------|')
+        print('|        CONVERSÃO        |')
+        print('|-------------------------|')
+        print('| Binário -> {}           |'.format(sum))
+        print('| Decimal -> {}           |'.format(sum))
+        print('|-------------------------|')
+    
+    def logicalPorts(self):
+        # Código de funções equivalentes as portas lógicas
+        print('logicalPorts')
+
+    def relationalAlgebra(self):
+        # Código de expressão da álgebra relacional
+        print('relationalAlgebra')
+
+app = Application()
+
+app.mainloop()
