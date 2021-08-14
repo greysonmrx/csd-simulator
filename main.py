@@ -1,8 +1,15 @@
+from numericSystems import NumericSystems
+
 class Application:
+    numericSystems = NumericSystems()
+    colors = {
+        'NORMAL': '\033[0m',
+        'GREEN': '\033[1m\033[92m'
+    }
+
     def mainloop(self):
-        
         while True:
-            print("Escolha uma funcionalidade:\n")
+            print(self.colors['NORMAL'] + "Escolha uma funcionalidade:\n")
             print("  1 - Conversão entre unidades de medida de informação")
             print("  2 - Conversão entre bases numéricas")
             print("  3 - Soma de binários")
@@ -33,133 +40,59 @@ class Application:
 
     
     def numericSystemsConversion(self):
-        #convert decimal to binary
-        def decimal2binary(number):
-            remainder_list = []
-            result = ''
-
-            if number == 0 or number == 1:
-                return number
-            
-            while number > 0:
-                remainder = number % 2
-                remainder_list.append(remainder)
-                number = number // 2
-            
-            for i in reversed(remainder_list):
-                result += str(i)
-            return int(result)
-
-        #convert binary to decimal
-        def binary2decimal(number):
-            j, result = 0, 0
-            for i in reversed(str(number)):
-                i = int(i)
-                result += (i*(2**j))
-                j += 1
-            return result
-
-        #convert decimal to hexadecimal
-        def decimal2hex(number):
-            remainder_list = []
-            result = ''
-
-            hex = {0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', '6': 6, 7: '7', 8: '8', 9: '9',
-                10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F' }
-
-            if number == 0 or number == 1:
-                return number
-            
-            while number > 0:
-                remainder = number % 16
-                remainder_list.append(hex[remainder])
-                number = number // 16
-            
-            for i in reversed(remainder_list):
-                result += str(i)
-
-            return result
-
-        #convert hexadecimal to decimal
-        def hex2decimal(number):
-            result = 0
-            j = 0
-            hex = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,
-                'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15 }
-
-            for i in reversed(str(number)):
-                result += hex[i] *(16**j)
-                j += 1
-            return result
-
-        #convert decimal to octal
-        def decimal2octal(number):
-            remainder_list = []
-            result = ''
-
-            if number == 0 or number == 1:
-                return number
-            
-            while number > 0:
-                remainder = number % 8
-                remainder_list.append(remainder)
-                number = number // 8
-            
-            for i in reversed(remainder_list):
-                result += str(i)
-            return int(result)
-
-        #convert octal to decimal
-        def octal2decimal(number):
-            j, result = 0, 0
-            for i in reversed(str(number)):
-                i = int(i)
-                result += (i*(8**j))
-                j += 1
-            return result
         while True:
-            print("Escolha uma funcionalidade:\n")
+            print(self.colors['NORMAL'] + "\nEscolha uma funcionalidade:\n")
             print(" 1 - Binário (base 2)")
             print(" 2 - Octal (base 8)")
             print(" 3 - Decimal (base 10)")
             print(" 4 - Hexadecimal (base 16)")
             print(" 5 - Voltar para o menu principal")
-            option = int(input("Escolha uma opção: "))
+
+            option = int(input("\nEscolha uma opção: "))
+            decimal = 0
             
             if (option == 5):
                 break
 
             if option == 1:
                 print("\nVocê escolheu a opção 1 - Binário (base 2)")
-                number = int(input("Digite seu número em binário: "))
-                decimal = binary2decimal(number)
+
+                number = int(input("\nDigite seu número em binário: "))
+                decimal = self.numericSystems.binaryToDecimal(number)
 
             elif option == 2:
                 print("\nVocê escolheu a opção 2 - Octal (base 8)")
-                number = int(input("Digite seu número em octal: "))
-                decimal = octal2decimal(number)
+
+                number = int(input("\nDigite seu número em octal: "))
+                decimal = self.numericSystems.octalToDecimal(number)
                 
             elif option == 3:
                 print("\nVocê escolheu a opção 3 - Decimal (base 10)")
-                decimal = int(input("Digite seu número em decimal: "))
+
+                decimal = int(input("\nDigite seu número em decimal: "))
 
             elif option == 4:
                 print("\nVocê escolheu a opção 1 - Hexadecimal (base 16)")
-                number = int(input("Digite seu número em hexadecimal: "))
-                decimal = hex2decimal(number)
 
-            print("Binario: ", decimal2binary(decimal))
-            print("Octal: " , decimal2octal(decimal))
-            print("Decimal: ", decimal)
-            print("Hexadecimal: ", decimal2hex(decimal))
+                number = input("\nDigite seu número em hexadecimal: ")
+                decimal = self.numericSystems.hexadecimalToDecimal(number.upper())
+
+            binary = self.numericSystems.decimalToBinary(decimal)
+            octal = self.numericSystems.decimalToOctal(decimal)
+            hexadecimal = self.numericSystems.decimalToHexadecimal(decimal)
+
+            print(self.colors['GREEN'] + '\nBinário     -> {}'.format(binary))
+            print('Octal       -> {}'.format(octal))
+            print('Decimal     -> {}'.format(decimal))
+            print('Hexadecimal -> {}\n'.format(hexadecimal))
 
     def sumOfBinaries(self):
-        firstBinary = input()
-        secondBinary = input()
+        firstBinary = input(self.colors['NORMAL'] + '\nDigite o primeiro binário: ')
+        secondBinary = input('Digite o segundo binário: ')
 
         firstBinary, secondBinary = firstBinary[::-1], secondBinary[::-1]
 
-        sum = 0
+        deciamlSum = 0
 
         for index in range(len(firstBinary)):
             digit = int(firstBinary[index])
@@ -167,7 +100,7 @@ class Application:
             if (digit == 0):
                 continue
 
-            sum += (digit * 2) ** index
+            deciamlSum += (digit * 2) ** index
 
         for index in range(len(secondBinary)):
             digit = int(secondBinary[index])
@@ -175,14 +108,13 @@ class Application:
             if (digit == 0):
                 continue
 
-            sum += (digit * 2) ** index
+            deciamlSum += (digit * 2) ** index
 
-        print('|-------------------------|')
-        print('|        CONVERSÃO        |')
-        print('|-------------------------|')
-        print('| Binário -> {}           |'.format(sum))
-        print('| Decimal -> {}           |'.format(sum))
-        print('|-------------------------|')
+        binarySum = self.numericSystems.decimalToBinary(deciamlSum)
+
+        print(self.colors['GREEN'] + '\nResultados da soma: ')
+        print('  - Em binário -> {}'.format(binarySum))
+        print('  - Em decimal -> {}\n'.format(deciamlSum))
     
     def logicalPorts(self):
         # Código de funções equivalentes as portas lógicas
