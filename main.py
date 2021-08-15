@@ -33,7 +33,7 @@ class Application:
             elif (selectedOption == 5):
                 self.relationalAlgebra()
 
-    def measurementUnitsConversion(self):
+    def measurementUnitsC2onversion(self):
         # Código de conversão entre unidades de medidas
         
         print('measurementUnitsConversion')
