@@ -30,26 +30,31 @@ class LogicalPorts:
 
         return a
     
-    #porta nor
+    #nor ports
     def norOutput(self, logical_inputs):
-        return not_convert(or_convert(logical_inputs))
-
-    #porta nand
-    def nandOutput(self, logical_inputs):
-        return not_convert(and_convert(logical_inputs))
-
-    
-    def xorOutput(self, logical_inputs):
-        if len(logical_inputs) == 1:
-            return int(logical_inputs)
-        
         a = int(logical_inputs[0])
-        for i in range(len(logical_inputs)):
-            for j in range(len(logical_inputs)):
-                a = int(logical_inputs[i])
-                b = int(logical_inputs[j])
+        for i in range(1, len(logical_inputs)):
+            b = int(logical_inputs[i])
+            a = a or b
+            a = self.notOutput(a)
 
-                if a != b:  return 1
-                else:   output = 0
-        
-        return output
+        return a
+
+    #nand ports
+    def nandOutput(self, logical_inputs):
+        a = int(logical_inputs[0])
+        for i in range(1, len(logical_inputs)):
+            b = int(logical_inputs[i])
+            a = a and b
+            a = self.notOutput(a)
+
+        return a
+
+    #xor ports
+    def xorOutput(self, logical_inputs):
+        a = int(logical_inputs[0])
+        for i in range(1, len(logical_inputs)):
+            b = int(logical_inputs[i])
+            if (a == b):    a = 0
+            else:   a = 1            
+        return a
