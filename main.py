@@ -5,6 +5,7 @@ from booleanAlgebra import BooleanAlgebra
 class Application:
     numericSystems = NumericSystems()
     booleanAlgebra = BooleanAlgebra()
+    logicalPorts = LogicalPorts()
 
     def mainloop(self):
         while True:
@@ -169,7 +170,6 @@ class Application:
         print('  - Em decimal -> {}\n'.format(deciamlSum))
     
     def logicalPortsOutput(self):
-
         while True:
             print("\nEscolha uma porta:\n")
             print(" 1 - not")
