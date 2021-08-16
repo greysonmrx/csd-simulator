@@ -45,11 +45,11 @@ class LogicalPorts:
         
         a = int(logical_inputs[0])
         for i in range(len(logical_inputs)):
-            for j in range(1, len(logical_inputs)):
+            for j in range(len(logical_inputs)):
                 a = int(logical_inputs[i])
                 b = int(logical_inputs[j])
 
-                if a != b:
-                    return 1
-
-                return 0
+                if a != b:  return 1
+                else:   output = 0
+        
+        return output

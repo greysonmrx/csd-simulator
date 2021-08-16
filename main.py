@@ -39,7 +39,7 @@ class Application:
             elif (selectedOption == 5):
                 self.booleanAlgebraExpression()
 
-    def measurementUnitsC2onversion(self):
+    def measurementUnitsConversion(self):
         
         while True:
             print("Escola o tipo de conversão:\n")
