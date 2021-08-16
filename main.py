@@ -1,3 +1,4 @@
+from logicalPorts import LogicalPorts
 from numericSystems import NumericSystems
 from booleanAlgebra import BooleanAlgebra
 
@@ -27,7 +28,7 @@ class Application:
             elif (selectedOption == 3):
                 self.sumOfBinaries()
             elif (selectedOption == 4):
-                self.logicalPorts()
+                self.logicalPortsOutput()
             elif (selectedOption == 5):
                 self.booleanAlgebraExpression()
 
@@ -167,9 +168,44 @@ class Application:
         print('  - Em binário -> {}'.format(binarySum))
         print('  - Em decimal -> {}\n'.format(deciamlSum))
     
-    def logicalPorts(self):
-        # Código de funções equivalentes as portas lógicas
-        print('logicalPorts')
+    def logicalPortsOutput(self):
+
+        while True:
+            print("\nEscolha uma porta:\n")
+            print(" 1 - not")
+            print(" 2 - or")
+            print(" 3 - and")
+            print(" 4 - nor")
+            print(" 5 - nand")
+            print(" 6 - xor")
+            print(" 7 - Voltar para o menu principal")
+
+            option = int(input("\nEscolha uma opção: "))
+            
+            if (option == 7):
+                break
+
+            inputs = input("\nEntrada: ")
+
+            if (option == 1):
+                logical_output = self.logicalPorts.notOutput(inputs)
+
+            if (option == 2):
+                logical_output = self.logicalPorts.orOutput(inputs)
+
+            if (option == 3):
+                logical_output = self.logicalPorts.andOutput(inputs)
+
+            if (option == 4):
+                logical_output = self.logicalPorts.norOutput(inputs)
+
+            if (option == 5):
+                logical_output = self.logicalPorts.nandOutput(inputs)
+
+            if (option == 6):
+                logical_output = self.logicalPorts.xorOutput(inputs)
+            
+            print("Saída -> {}" .format(logical_output))
 
     def booleanAlgebraExpression(self):
         expression = input('\nDigite a expressão: ').upper()
