@@ -5,17 +5,10 @@ from booleanAlgebra import BooleanAlgebra
 class Application:
     numericSystems = NumericSystems()
     booleanAlgebra = BooleanAlgebra()
-    logicalPorts = LogicalPorts()
-
-    colors = {
-        'DEFAULT': '\033[0m',
-        'GREEN': '\033[1m\033[92m',
-        'RED': '\033[1m\033[91m'
-    }
 
     def mainloop(self):
         while True:
-            print(self.colors['DEFAULT'] + "Escolha uma funcionalidade:\n")
+            print("Escolha uma funcionalidade:\n")
             print("  1 - Conversão entre unidades de medida de informação")
             print("  2 - Conversão entre bases numéricas")
             print("  3 - Soma de binários")
@@ -40,7 +33,6 @@ class Application:
                 self.booleanAlgebraExpression()
 
     def measurementUnitsConversion(self):
-        
         while True:
             print("Escola o tipo de conversão:\n")
             print("  1 - Byte para kyloByte")
@@ -108,7 +100,7 @@ class Application:
 
     def numericSystemsConversion(self):
         while True:
-            print(self.colors['DEFAULT'] + "\nEscolha a base númerica original:\n")
+            print("\nEscolha uma funcionalidade:\n")
             print(" 1 - Binário (base 2)")
             print(" 2 - Octal (base 8)")
             print(" 3 - Decimal (base 10)")
@@ -148,13 +140,13 @@ class Application:
             octal = self.numericSystems.decimalToOctal(decimal)
             hexadecimal = self.numericSystems.decimalToHexadecimal(decimal)
 
-            print(self.colors['GREEN'] + '\nBinário     -> {}'.format(binary))
+            print('\nBinário     -> {}'.format(binary))
             print('Octal       -> {}'.format(octal))
             print('Decimal     -> {}'.format(decimal))
             print('Hexadecimal -> {}\n'.format(hexadecimal))
 
     def sumOfBinaries(self):
-        firstBinary = input(self.colors['DEFAULT'] + '\nDigite o primeiro binário: ')
+        firstBinary = input('\nDigite o primeiro binário: ')
         secondBinary = input('Digite o segundo binário: ')
 
         binaries = [firstBinary[::-1], secondBinary[::-1]]
@@ -172,7 +164,7 @@ class Application:
 
         binarySum = self.numericSystems.decimalToBinary(deciamlSum)
 
-        print(self.colors['GREEN'] + '\nResultados da soma: ')
+        print('\nResultados da soma: ')
         print('  - Em binário -> {}'.format(binarySum))
         print('  - Em decimal -> {}\n'.format(deciamlSum))
     
@@ -216,10 +208,10 @@ class Application:
             print("Saída -> {}" .format(logical_output))
 
     def booleanAlgebraExpression(self):
-        expression = input(self.colors['DEFAULT'] + '\nDigite a expressão: ').upper()
+        expression = input('\nDigite a expressão: ').upper()
 
         if (not self.booleanAlgebra.parenthesesIsBalanced(expression)):
-            return print(self.colors['RED'] + '\nExpressão inválida!\n')
+            return print('\nExpressão inválida!\n')
 
         operators = ['AND', 'OR', 'XOR', 'NAND']
 
@@ -230,7 +222,7 @@ class Application:
         splittedExpression = formattedExpression.split(' ')
 
         if (splittedExpression[0] in operators or splittedExpression[len(splittedExpression) - 1] in operators):
-            return print(self.colors['RED'] + '\nExpressão inválida!\n')
+            return print('\nExpressão inválida!\n')
 
         index = 0
 
@@ -240,17 +232,17 @@ class Application:
 
                 if (value in operators):
                     if (previousValue in operators or previousValue == 'NOT'):
-                        return print(self.colors['RED'] + '\nExpressão inválida!\n')
+                        return print('\nExpressão inválida!\n')
                 elif (previousValue in operators and value in operators):
-                    return print(self.colors['RED'] + '\nExpressão inválida!\n')
-                elif (value == 'NOT' and (not previousValue in operators)):
-                    return print(self.colors['RED'] + '\nExpressão inválida!\n')
+                    return print('\nExpressão inválida!\n')
+                elif (value == 'NOT' and (not previousValue in operators and previousValue != 'NOT')):
+                    return print('\nExpressão inválida!\n')
                 elif (value != 'NOT' and previousValue != 'NOT' and (not previousValue in operators)):
-                    return print(self.colors['RED'] + '\nExpressão inválida!\n')
+                    return print('\nExpressão inválida!\n')
             
             index += 1
 
-        return print(self.colors['GREEN'] + '\nExpressão válida!\n')
+        return print('\nExpressão válida!\n')
 
 app = Application()
 
