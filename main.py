@@ -37,6 +37,7 @@ class Application:
                 self.booleanAlgebraExpression()
 
     def measurementUnitsC2onversion(self):
+        
         while True:
             print("Escola o tipo de conversão:\n")
             print("  1 - Byte para kyloByte")
@@ -52,57 +53,56 @@ class Application:
             print("  11 - Sair")
 
             selectedOption = int(input("\nSelecione uma opção: "))
-
             if (selectedOption == 11):
                 break
 
             if (selectedOption == 1):
-                num = int(input("Digite o valor a ser convertido:\n")
+                num = int(input("Digite o valor a ser convertido:\n"))
                 kb = num/1000
-                print("O valor em KiloByte é " kb)
+                print("O valor em KiloByte é {}\n".format(kb))
             elif (selectedOption == 2):
-                num = int(input("Digite o valor a ser convertido:\n")
+                num = int(input("Digite o valor a ser convertido:\n"))
                 kb = num/1000
                 mb = kb/1000
-                print("O valor em MegaBite é " mb)
+                print("O valor em MegaBite é {}\n".format(mb))
             elif (selectedOption == 3):
-                num = int(input("Digite o valor a ser convertido:\n")
+                num = int(input("Digite o valor a ser convertido:\n"))
                 kb = num/1000
                 mb = kb/1000
                 gb = mb/1000
-                print("O valor em GigaBite é " gb)
+                print("O valor em GigaBite é {}\n".format(gb))
             elif (selectedOption == 4):
-                num = int(input("Digite o valor a ser convertido:\n")
+                num = int(input("Digite o valor a ser convertido:\n"))
                 kb = num/1000
                 mb = kb/1000
                 gb = mb/1000
                 tb = gb/1000
-                print("O valor em TeraBite é " tb)
+                print("O valor em TeraBite é {}\n".format(tb))
             elif (selectedOption == 5):
-                num = int(input("Digite o valor a ser convertido:\n")
+                num = int(input("Digite o valor a ser convertido:\n"))
                 mb = num/1000
-                print("O valor em MegaBite é " mb)
+                print("O valor em MegaBite é {}\n".format(mb))
             elif (selectedOption == 6):
-                num = int(input("Digite o valor a ser convertido:\n")
+                num = int(input("Digite o valor a ser convertido:\n"))
                 kb = num*1000
-                print("O valor em KiloBite é " kb)
+                print("O valor em KiloBite é {}\n".format(kb))
             elif (selectedOption == 7):
-                num = int(input("Digite o valor a ser convertido:\n")
+                num = int(input("Digite o valor a ser convertido:\n"))
                 mb = num/1000
-                print("O valor em MegaBite é " mb)
+                print("O valor em MegaBite é {}\n".format(mb))
             elif (selectedOption == 8):
-                num = int(input("Digite o valor a ser convertido:\n")
+                num = int(input("Digite o valor a ser convertido:\n"))
                 gb = num*1000
-                print("O valor em GigaBite é " gb) 
+                print("O valor em GigaBite é {}\n".format(gb)) 
             elif (selectedOption == 9):
-                num = int(input("Digite o valor a ser convertido:\n")
+                num = int(input("Digite o valor a ser convertido:\n"))
                 tb = num/1000
-                print("O valor em TeraBite é " tb)
+                print("O valor em TeraBite é {}\n".format(tb))
             elif (selectedOption == 10):
-                num = int(input("Digite o valor a ser convertido:\n")
+                num = int(input("Digite o valor a ser convertido:\n"))
                 gb = num*1000
-                print("O valor em GigaBite é " gb)
-                          
+                print("O valor em GigaBite é {}\n".format(gb))
+
     def numericSystemsConversion(self):
         while True:
             print(self.colors['DEFAULT'] + "\nEscolha uma funcionalidade:\n")
