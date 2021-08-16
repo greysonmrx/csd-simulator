@@ -235,7 +235,7 @@ class Application:
                         return print('\nExpressão inválida!\n')
                 elif (previousValue in operators and value in operators):
                     return print('\nExpressão inválida!\n')
-                elif (value == 'NOT' and (not previousValue in operators)):
+                elif (value == 'NOT' and (not previousValue in operators and previousValue != 'NOT')):
                     return print('\nExpressão inválida!\n')
                 elif (value != 'NOT' and previousValue != 'NOT' and (not previousValue in operators)):
                     return print('\nExpressão inválida!\n')
