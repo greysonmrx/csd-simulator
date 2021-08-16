@@ -82,5 +82,46 @@ class NumericSystems:
             i = int(i)
             result += (i*(8**j))
             j += 1
-            
+
         return result
+    
+    def verifyBinary(self, number):
+        for digit in str(number):
+            try:
+                if 0 > int(digit) or 1 < int(digit):
+                    return False
+            except:
+                return False
+        
+        return True
+
+    def verifyOctal(self, number):
+        for digit in str(number):
+            try:
+                if 0 > int(digit) or 7 < int(digit):
+                    return False
+            except:
+                return False
+        
+        return True
+    
+    def verifyDecimal(self, number):
+        for digit in str(number):
+            try:
+                if 0 > int(digit) or 9 < int(digit):
+                    return False
+            except:
+                return False
+    
+    def verifyHexadecimal(self, number):
+        validChars = ['A', 'B', 'C', 'D', 'E', 'F']
+
+        for digit in str(number):
+            try:
+                if 0 > int(digit) or 9 < int(digit):
+                    return False
+            except:
+                if (not digit.upper() in validChars):
+                    return False
+        
+        return True
