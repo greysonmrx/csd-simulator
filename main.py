@@ -37,11 +37,72 @@ class Application:
                 self.booleanAlgebraExpression()
 
     def measurementUnitsC2onversion(self):
-        # Código de conversão entre unidades de medidas
-        
-        print('measurementUnitsConversion')
+        while True:
+            print("Escola o tipo de conversão:\n")
+            print("  1 - Byte para kyloByte")
+            print("  2 - Byte para MegaByte")
+            print("  3 - Byte para GigaByte")
+            print("  4 - Byte para TeraByte")
+            print("  5 - KyloByte para MegaByte")
+            print("  6 - MegaByte para KyloByte")
+            print("  7 - GigaByte para MegaByte")
+            print("  8 - MegaByte para GigaByte")
+            print("  9 - GigaByte para TeraByte")
+            print("  10 - TeraByte para GigaByte")
+            print("  11 - Sair")
 
-    
+            selectedOption = int(input("\nSelecione uma opção: "))
+
+            if (selectedOption == 11):
+                break
+
+            if (selectedOption == 1):
+                num = int(input("Digite o valor a ser convertido:\n")
+                kb = num/1000
+                print("O valor em KiloByte é " kb)
+            elif (selectedOption == 2):
+                num = int(input("Digite o valor a ser convertido:\n")
+                kb = num/1000
+                mb = kb/1000
+                print("O valor em MegaBite é " mb)
+            elif (selectedOption == 3):
+                num = int(input("Digite o valor a ser convertido:\n")
+                kb = num/1000
+                mb = kb/1000
+                gb = mb/1000
+                print("O valor em GigaBite é " gb)
+            elif (selectedOption == 4):
+                num = int(input("Digite o valor a ser convertido:\n")
+                kb = num/1000
+                mb = kb/1000
+                gb = mb/1000
+                tb = gb/1000
+                print("O valor em TeraBite é " tb)
+            elif (selectedOption == 5):
+                num = int(input("Digite o valor a ser convertido:\n")
+                mb = num/1000
+                print("O valor em MegaBite é " mb)
+            elif (selectedOption == 6):
+                num = int(input("Digite o valor a ser convertido:\n")
+                kb = num*1000
+                print("O valor em KiloBite é " kb)
+            elif (selectedOption == 7):
+                num = int(input("Digite o valor a ser convertido:\n")
+                mb = num/1000
+                print("O valor em MegaBite é " mb)
+            elif (selectedOption == 8):
+                num = int(input("Digite o valor a ser convertido:\n")
+                gb = num*1000
+                print("O valor em GigaBite é " gb) 
+            elif (selectedOption == 9):
+                num = int(input("Digite o valor a ser convertido:\n")
+                tb = num/1000
+                print("O valor em TeraBite é " tb)
+            elif (selectedOption == 10):
+                num = int(input("Digite o valor a ser convertido:\n")
+                gb = num*1000
+                print("O valor em GigaBite é " gb)
+                          
     def numericSystemsConversion(self):
         while True:
             print(self.colors['DEFAULT'] + "\nEscolha uma funcionalidade:\n")
