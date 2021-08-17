@@ -16,8 +16,8 @@ class MeasurementUnits:
         toMeasurementUnit = measurementUnits[_to]
 
         if (fromMeasurementUnit > toMeasurementUnit):
-            return value * (1000 * (fromMeasurementUnit - toMeasurementUnit))
+            return value * (1000 ** (fromMeasurementUnit - toMeasurementUnit))
         elif (fromMeasurementUnit < toMeasurementUnit):
-            return value / (1000 * (toMeasurementUnit - fromMeasurementUnit))
+            return value / (1000 ** (toMeasurementUnit - fromMeasurementUnit))
         else:
             return value

@@ -112,6 +112,8 @@ class NumericSystems:
                     return False
             except:
                 return False
+
+        return True
     
     def verifyHexadecimal(self, number):
         validChars = ['A', 'B', 'C', 'D', 'E', 'F']

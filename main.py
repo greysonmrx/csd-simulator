@@ -76,7 +76,7 @@ class Application:
 
         measurementUnitsLabels = {
             '1': 'Byte',
-            '2': 'Kylobyte',
+            '2': 'Kilobyte',
             '3': 'Megabyte',
             '4': 'Gigabyte',
             '5': 'Terabyte',
@@ -86,7 +86,7 @@ class Application:
             '9': 'Yotabyte'
         }
 
-        value = int(input('\nDigite o valor em {}s: '.format(measurementUnitsLabels[_from])))
+        value = float(input('\nDigite o valor em {}s: '.format(measurementUnitsLabels[_from])))
 
         _from = measurementUnitsLabels[_from].lower()
         _to = measurementUnitsLabels[_to].lower()
@@ -96,73 +96,66 @@ class Application:
         print("\n{} {}s equivalem a {} {}s\n".format(value, _from.title(), convertedValue, _to.title()))
 
     def numericSystemsConversion(self):
-        while True:
-            print("\nEscolha uma funcionalidade:\n")
-            print(" 1 - Binário (base 2)")
-            print(" 2 - Octal (base 8)")
-            print(" 3 - Decimal (base 10)")
-            print(" 4 - Hexadecimal (base 16)")
-            print(" 5 - Voltar para o menu principal")
+        print("\nEscolha uma funcionalidade:\n")
+        print(" 1 - Binário (base 2)")
+        print(" 2 - Octal (base 8)")
+        print(" 3 - Decimal (base 10)")
+        print(" 4 - Hexadecimal (base 16)")
 
-            option = int(input("\nEscolha uma opção: "))
+        option = int(input("\nEscolha uma opção: "))
 
-            try:
-                if (int(option) > 5 or int(option) < 1):
-                    return print('\nSelecione uma opção válida!\n')
-            except:
+        try:
+            if (int(option) > 4 or int(option) < 1):
                 return print('\nSelecione uma opção válida!\n')
-
-            decimal = 0
+        except:
+            return print('\nSelecione uma opção válida!\n')
             
-            if (option == 5):
-                break
+        if option == 1:
+            print("\nVocê escolheu a opção 1 - Binário (base 2)")
 
-            if option == 1:
-                print("\nVocê escolheu a opção 1 - Binário (base 2)")
+            number = int(input("\nDigite seu número em binário: "))
 
-                number = int(input("\nDigite seu número em binário: "))
+            if (not self.numericSystems.verifyBinary(number)):
+                return print('\nDigite um número binário válido!\n')
 
-                if (not self.numericSystems.verifyBinary(number)):
-                    return print('\nDigite um número binário válido!\n')
+            decimal = self.numericSystems.binaryToDecimal(number)
 
-                decimal = self.numericSystems.binaryToDecimal(number)
+        elif option == 2:
+            print("\nVocê escolheu a opção 2 - Octal (base 8)")
 
-            elif option == 2:
-                print("\nVocê escolheu a opção 2 - Octal (base 8)")
+            number = int(input("\nDigite seu número em octal: "))
 
-                number = int(input("\nDigite seu número em octal: "))
+            if (not self.numericSystems.verifyOctal(number)):
+                return print('\nDigite um número octal válido!\n')
 
-                if (not self.numericSystems.verifyOctal(number)):
-                    return print('\nDigite um número octal válido!\n')
-
-                decimal = self.numericSystems.octalToDecimal(number)
+            decimal = self.numericSystems.octalToDecimal(number)
                 
-            elif option == 3:
-                print("\nVocê escolheu a opção 3 - Decimal (base 10)")
+        elif option == 3:
+            print("\nVocê escolheu a opção 3 - Decimal (base 10)")
 
-                decimal = int(input("\nDigite seu número em decimal: "))
+            decimal = int(input("\nDigite seu número em decimal: "))
 
-                if (not self.numericSystems.verifyDecimal(number)):
-                    return print('\nDigite um número decimal válido!\n')
+            if (not self.numericSystems.verifyDecimal(decimal)):
+                return print('\nDigite um número decimal válido!\n')
 
-            elif option == 4:
-                print("\nVocê escolheu a opção 1 - Hexadecimal (base 16)")
+        elif option == 4:
+            print("\nVocê escolheu a opção 1 - Hexadecimal (base 16)")
 
-                number = input("\nDigite seu número em hexadecimal: ")
+            number = input("\nDigite seu número em hexadecimal: ")
 
-                if (not self.numericSystems.verifyHexadecimal(number)):
-                    return print('\nDigite um número hexadecimal válido!\n')
+            if (not self.numericSystems.verifyHexadecimal(number)):
+                return print('\nDigite um número hexadecimal válido!\n')
 
-                decimal = self.numericSystems.hexadecimalToDecimal(number.upper())
+            decimal = self.numericSystems.hexadecimalToDecimal(number.upper())
 
-            binary = self.numericSystems.decimalToBinary(decimal)
-            octal = self.numericSystems.decimalToOctal(decimal)
-            hexadecimal = self.numericSystems.decimalToHexadecimal(decimal)
+        binary = self.numericSystems.decimalToBinary(decimal)
+        octal = self.numericSystems.decimalToOctal(decimal)
+        hexadecimal = self.numericSystems.decimalToHexadecimal(decimal)
 
-            print('\nBinário     -> {}'.format(binary))
-            print('Octal       -> {}'.format(octal))
-            print('Decimal     -> {}'.format(decimal))
-            print('Hexadecimal -> {}\n'.format(hexadecimal))
+        print('\nBinário     -> {}'.format(binary))
+        print('Octal       -> {}'.format(octal))
+        print('Decimal     -> {}'.format(decimal))
+        print('Hexadecimal -> {}\n'.format(hexadecimal))
 
     def sumOfBinaries(self):
         firstBinary = input('\nDigite o primeiro binário: ')
